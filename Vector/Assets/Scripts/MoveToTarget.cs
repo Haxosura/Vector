@@ -17,19 +17,28 @@ public class MoveToTarget : MonoBehaviour
 
     public float Speed = 20.0f;
 
-    
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private bool Stopped = false;
+    public float Range = 20;
 
     // Update is called once per frame
     void Update()
     {
         FindObject();
         MoveToEvader();
+
+        /*if (!Stopped)
+        {
+            FindObject();
+            CheckDistancesRange();
+            //Debug.Log("Stopped");
+        }
+        else
+        {
+            
+            CheckDistancesRange();
+            //Debug.Log("Stopped");
+        }*/
+        
     }
 
     public void FindObject()
@@ -45,12 +54,34 @@ public class MoveToTarget : MonoBehaviour
     public void MoveToEvader()
     {
         Gap = MyVector.SubtractVector(Evader, Pursuer);
-        Gap = Gap.Normalize();
-        MoveToVector = Gap.ToUnityVector();
-        this.transform.position += MoveToVector * Time.deltaTime * Speed;
+        
+
+        Debug.Log(Gap.GetMegg());
+
+        if (Gap.GetMegg() >= Range)
+        {   
+            Gap = Gap.Normalize();
+            MoveToVector = Gap.ToUnityVector();
+            this.transform.position += MoveToVector * Time.deltaTime * Speed;
+        }
+
+        
 
         //this.transform.position = MoveToVector;
         //Debug.Log("Gap: " + "X: " + Gap.x + ", Y:  " + Gap.y + ", Z: " + Gap.z);
         //Debug.Log("Moving To Evaders");
     }
+
+    public void CheckDistancesRange()
+    {
+        if (Gap.GetMegg() <= Range)
+        {
+            Stopped = true;
+        }
+        else
+        {
+            Stopped = false;
+        }
+    }
+
 }
