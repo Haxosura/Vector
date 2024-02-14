@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float MoveSpeed;
+    public float SprintSpeed;
 
     // Update is called once per frame
     void Update()
     {
-        
+        Vector3 MoveDirection = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
+
+        float Speed = Input.GetKey(KeyCode.LeftShift) ? SprintSpeed : MoveSpeed;
+
+        transform.position += MoveDirection * Speed * Time.deltaTime;
     }
 }

@@ -7,6 +7,8 @@ using UnityEngine;
 
 public class MyVector
 {
+    // Workshop 1
+
     public float x, y, z;
 
     public MyVector(float x, float y, float z)
@@ -63,6 +65,8 @@ public class MyVector
 
         return rv;
     }
+
+    // Workshop 2
 
     public static MyVector Scalar(MyVector vector, float scalar)
     {
