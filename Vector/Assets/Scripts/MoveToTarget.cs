@@ -17,7 +17,6 @@ public class MoveToTarget : MonoBehaviour
 
     public float Speed = 20.0f;
 
-    private bool Stopped = false;
     public float Range = 20;
 
     // Update is called once per frame
@@ -72,16 +71,6 @@ public class MoveToTarget : MonoBehaviour
         //Debug.Log("Moving To Evaders");
     }
 
-    public void CheckDistancesRange()
-    {
-        if (Gap.GetMegg() <= Range)
-        {
-            Stopped = true;
-        }
-        else
-        {
-            Stopped = false;
-        }
-    }
+    
 
 }

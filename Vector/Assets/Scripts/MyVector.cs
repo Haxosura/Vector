@@ -10,6 +10,7 @@ public class MyVector
     // Workshop 1
 
     public float x, y, z;
+    public float up;
 
     public MyVector(float x, float y, float z)
     {

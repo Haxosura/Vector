@@ -22,6 +22,39 @@ public class MathsLib
         return rv;
     }
 
+    public static MyVector RadianstoDegrees(MyVector Radians)
+    {
+        MyVector Degrees = new MyVector(0, 0, 0);
+
+        Degrees.x = Radians.x * 180 / Mathf.PI;
+        Degrees.y = Radians.y * 180 / Mathf.PI;
+        Degrees.z = Radians.z * 180 / Mathf.PI;
+
+        return Degrees;
+    }
+
+    public static MyVector DegreesToRadians(MyVector Degrees)
+    {
+        MyVector Radians = new MyVector(0, 0, 0);
+
+        Radians.x = Degrees.x / (180 / Mathf.PI);
+        Radians.y = Degrees.y / (180 / Mathf.PI);
+        Radians.z = Degrees.z / (180 / Mathf.PI);
+
+        return Radians;
+    }
+
+    public static MyVector EularAngleToDirection(MyVector EulerAngle)
+    {
+        MyVector rv = new MyVector(0, 0, 0);
+
+        rv.z = Mathf.Cos(EulerAngle.y) * Mathf.Cos(-EulerAngle.x);
+        rv.y = Mathf.Sin(-EulerAngle.x);
+        rv.x = Mathf.Cos(-EulerAngle.x) * Mathf.Sin(EulerAngle.y);
+
+        return rv;
+    }
+
     public static MyVector VectorCrossProduct(MyVector A, MyVector B)
     {
         MyVector C = new MyVector(0, 0, 0);
