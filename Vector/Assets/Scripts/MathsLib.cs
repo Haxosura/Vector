@@ -66,6 +66,11 @@ public class MathsLib
 
         return C;
     }
+
+    public static Vector3 VectorLerp(Vector3 A, Vector3 B, float T)
+    {
+        return A *(1.0f - T) + B * T;
+    }
 }
 
 //Workshop 4
