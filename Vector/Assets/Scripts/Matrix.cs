@@ -57,13 +57,16 @@ public class Matrix : MonoBehaviour
             new Vector3(transform.position.x, transform.position.y, transform.position.z));
 
         // Transform Each Vertex
+        Matrix4by4 R = YawMatrix * (PitchMatrix * RollMatrix);
         for (int i = 0; i < TransformedVertices.Length; i++)
         {
+            TransformedVertices[i] = R * ModelSpaceVertices[i];
+
             //TransformedVertices[i] = RotMatrix * ModelSpaceVertices[i];
-            Vector3 RolledVertex = RollMatrix * ModelSpaceVertices[i];
+            /*Vector3 RolledVertex = RollMatrix * ModelSpaceVertices[i];
             Vector3 PitchedVertex = PitchMatrix * RolledVertex;
             Vector3 YawedVertix = YawMatrix * PitchedVertex;
-            TransformedVertices[i] = YawedVertix;
+            TransformedVertices[i] = YawedVertix;*/
         }
 
         /*for (int i = 0; i < TransformedVertices.Length; i++)

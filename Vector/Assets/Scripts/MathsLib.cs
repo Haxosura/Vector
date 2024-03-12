@@ -127,6 +127,18 @@ public class Matrix4by4
         values[3, 3] = 1;
     }
 
+    public static Matrix4by4 Identity
+    {
+        get
+        {
+            return new Matrix4by4(
+                new Vector4(1, 0, 0, 0),
+                new Vector4(0, 1, 0, 0),
+                new Vector4(0, 0, 1, 0),
+                new Vector4(0, 0, 0, 1));
+        }
+    }
+
     public static Vector4 operator *(Matrix4by4 lhs, Vector4 b)
     {
         return Vector4.zero;
