@@ -139,8 +139,30 @@ public class Matrix4by4
         }
     }
 
-    public static Vector4 operator *(Matrix4by4 lhs, Vector4 b)
+    public static Vector4 operator *(Matrix4by4 lhs, Vector4 rhs)
     {
-        return Vector4.zero;
+        Vector4 rv = new Vector4();
+            
+        rv.x = lhs.values[0, 0] * rhs.x + lhs.values[1, 0] * rhs.y + lhs.values[2, 0] * rhs.z + lhs.values[3, 0] * rhs.w;
+
+        return rv;
+    }
+    
+    public static Matrix4by4 operator *(Matrix4by4 lhs, Matrix4by4 rhs)
+    {
+        Matrix4by4 rv = new Matrix4by4(Vector4.zero, Vector4.zero, Vector4.zero, Vector4.zero);
+
+        return rv;
+    }
+
+    public Matrix4by4 TranslationInverse()
+    {
+        Matrix4by4 rv = Identity;
+
+        rv.values[0, 3] = -values[0, 3];
+        rv.values[1, 3] = -values[1, 3];
+        rv.values[2, 3] = -values[2, 3];
+        
+        return rv;
     }
 }

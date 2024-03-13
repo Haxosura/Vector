@@ -24,11 +24,11 @@ public class Matrix : MonoBehaviour
         // Create Rotation Matrix
         //Matrix4by4  RotMatrix = new Matrix4by4(new Vector3(1, 0, 0), new Vector3(0, 1, 0), new Vector3(0, 0, 1), Vector3.zero);
 
-        // Create Rotation Matrix that rotate around a Yaw
-        Matrix4by4 YawMatrix = new Matrix4by4(
-            new Vector3(Mathf.Cos(Angle), 0, -Mathf.Sin(Angle)),
-            new Vector3(0, 1, 0),
-            new Vector3(Mathf.Sin(Angle), 0, Mathf.Cos(Angle)),
+        // Create Rotation Matrix that rotate around a Roll
+        Matrix4by4 RollMatrix = new Matrix4by4(
+            new Vector3(Mathf.Cos(Angle), Mathf.Sin(Angle), 0),
+            new Vector3(-Mathf.Sin(Angle), Mathf.Cos(Angle), 0),
+            new Vector3(0, 0, 1),
             Vector3.zero);
 
         // Create Rotation Matrix that rotate around a Pitch
@@ -37,14 +37,13 @@ public class Matrix : MonoBehaviour
             new Vector3(0, Mathf.Cos(Angle), Mathf.Sin(Angle)),
             new Vector3(0, -Mathf.Sin(Angle), Mathf.Cos(Angle)),
             Vector3.zero);
-
-        // Create Rotation Matrix that rotate around a Roll
-        Matrix4by4 RollMatrix = new Matrix4by4(
-            new Vector3(Mathf.Cos(Angle), Mathf.Sin(Angle), 0),
-            new Vector3(-Mathf.Sin(Angle), Mathf.Cos(Angle), 0),
-            new Vector3(0, 0, 1),
+                
+        // Create Rotation Matrix that rotate around a Yaw
+        Matrix4by4 YawMatrix = new Matrix4by4(
+            new Vector3(Mathf.Cos(Angle), 0, -Mathf.Sin(Angle)),
+            new Vector3(0, 1, 0),
+            new Vector3(Mathf.Sin(Angle), 0, Mathf.Cos(Angle)),
             Vector3.zero);
-
 
         // Create Scaling Matrix (2x, y ,z)
         Matrix4by4  ScaleMatrix = new Matrix4by4(new Vector3(1, 0, 0) * 2.0f, new Vector3(0, 1, 0), new Vector3(0, 0, 1), Vector3.zero);
@@ -60,19 +59,17 @@ public class Matrix : MonoBehaviour
         Matrix4by4 R = YawMatrix * (PitchMatrix * RollMatrix);
         for (int i = 0; i < TransformedVertices.Length; i++)
         {
-            TransformedVertices[i] = R * ModelSpaceVertices[i];
+            //TransformedVertices[i] = R * ModelSpaceVertices[i];
 
-            //TransformedVertices[i] = RotMatrix * ModelSpaceVertices[i];
-            /*Vector3 RolledVertex = RollMatrix * ModelSpaceVertices[i];
+            Vector3 RolledVertex = RollMatrix * ModelSpaceVertices[i];
             Vector3 PitchedVertex = PitchMatrix * RolledVertex;
             Vector3 YawedVertix = YawMatrix * PitchedVertex;
-            TransformedVertices[i] = YawedVertix;*/
-        }
+            TransformedVertices[i] = YawedVertix;
 
-        /*for (int i = 0; i < TransformedVertices.Length; i++)
-        {
-            TransformedVertices[i] = TranslationMatrix * ModelSpaceVertices[i];
-        }*/
+            //TransformedVertices[i] = RotMatrix * ModelSpaceVertices[i];
+
+            //TransformedVertices[i] = TranslationMatrix * ModelSpaceVertices[i];
+        }
 
         MeshFilter MF = GetComponent<MeshFilter>();
 
