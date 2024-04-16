@@ -385,7 +385,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0108b62d247c344a3d8f23fbb2f4ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Angle: 0
+  Angle: 40
   ModelSpaceVertices: []
   NewPosition: {x: 6, y: 5, z: 3}
 --- !u!136 &469258591

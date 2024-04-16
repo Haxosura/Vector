@@ -156,24 +156,24 @@ public class Matrix4by4
         Matrix4by4 rv = new Matrix4by4(Vector4.zero, Vector4.zero, Vector4.zero, Vector4.zero);
 
         rv.values[0, 0] = lhs.values[0, 0] * rhs.values[0, 0] + lhs.values[0, 1] * rhs.values[1, 0] + lhs.values[0, 2] * rhs.values[2, 0] + lhs.values[0, 3] * rhs.values[3, 0];
-        rv.values[1, 0] = lhs.values[1, 0] * rhs.values[0, 0] + lhs.values[1, 1] * rhs.values[1, 0] + ;
-        rv.values[2, 0] = lhs.values[2, 0] * rhs.values[2, 0];
-        rv.values[3, 0] = lhs.values[3, 0] * rhs.values[3, 0];
+        rv.values[1, 0] = lhs.values[1, 0] * rhs.values[0, 0] + lhs.values[1, 1] * rhs.values[1, 0] + lhs.values[1, 2] * rhs.values[2, 0] + lhs.values[1, 3] * rhs.values[3, 0];
+        rv.values[2, 0] = lhs.values[2, 0] * rhs.values[0, 0] + lhs.values[2, 1] * rhs.values[1, 0] + lhs.values[2, 2] * rhs.values[2, 0] + lhs.values[3, 3] * rhs.values[3, 0];
+        rv.values[3, 0] = lhs.values[3, 0] * rhs.values[0, 0] + lhs.values[3, 1] * rhs.values[1, 0] + lhs.values[3, 2] * rhs.values[2, 0] + lhs.values[3, 3] * rhs.values[3, 0];
 
-        rv.values[0, 1] = lhs.values[0, 1] * rhs.values[0, 1];
-        rv.values[1, 1] = lhs.values[1, 1] * rhs.values[1, 1];
-        rv.values[2, 1] = lhs.values[2, 1] * rhs.values[2, 1];
-        rv.values[3, 1] = lhs.values[3, 1] * rhs.values[3, 1];
+        rv.values[0, 1] = lhs.values[0, 1] * rhs.values[0, 1] * lhs.values[0, 1] * rhs.values[1, 1] + lhs.values[0, 2] * rhs.values[2, 1] + lhs.values[0, 3] * rhs.values[3, 1];
+        rv.values[1, 1] = lhs.values[1, 1] * rhs.values[1, 1] * lhs.values[1, 1] * rhs.values[1, 1] + lhs.values[1, 2] * rhs.values[2, 1] + lhs.values[1, 3] * rhs.values[3, 1];
+        rv.values[2, 1] = lhs.values[2, 1] * rhs.values[2, 1] * lhs.values[2, 1] * rhs.values[1, 1] + lhs.values[2, 2] * rhs.values[2, 1] + lhs.values[2, 3] * rhs.values[3, 1];
+        rv.values[3, 1] = lhs.values[3, 1] * rhs.values[3, 1] * lhs.values[3, 1] * rhs.values[1, 1] + lhs.values[3, 2] * rhs.values[2, 1] + lhs.values[3, 3] * rhs.values[3, 1];
 
-        rv.values[0, 2] = lhs.values[0, 2] * rhs.values[0, 2];
-        rv.values[1, 2] = lhs.values[1, 2] * rhs.values[1, 2];
-        rv.values[2, 2] = lhs.values[2, 2] * rhs.values[2, 2];
-        rv.values[3, 2] = lhs.values[3, 2] * rhs.values[3, 2];
+        rv.values[0, 2] = lhs.values[0, 2] * rhs.values[0, 2] * lhs.values[0, 1] * rhs.values[1, 2] + lhs.values[0, 2] * rhs.values[2, 2] + lhs.values[0, 3] * rhs.values[3, 2];
+        rv.values[1, 2] = lhs.values[1, 2] * rhs.values[1, 2] * lhs.values[1, 1] * rhs.values[1, 2] + lhs.values[1, 2] * rhs.values[2, 2] + lhs.values[1, 3] * rhs.values[3, 2];
+        rv.values[2, 2] = lhs.values[2, 2] * rhs.values[2, 2] * lhs.values[2, 1] * rhs.values[1, 2] + lhs.values[2, 2] * rhs.values[2, 2] + lhs.values[2, 3] * rhs.values[3, 2];
+        rv.values[3, 2] = lhs.values[3, 2] * rhs.values[3, 2] * lhs.values[3, 1] * rhs.values[1, 2] + lhs.values[3, 2] * rhs.values[2, 2] + lhs.values[3, 3] * rhs.values[3, 2];
 
-        rv.values[0, 3] = lhs.values[0, 3] * rhs.values[0, 3];
-        rv.values[1, 3] = lhs.values[1, 3] * rhs.values[1, 3];
-        rv.values[2, 3] = lhs.values[2, 3] * rhs.values[2, 3];
-        rv.values[3, 3] = lhs.values[3, 3] * rhs.values[3, 3];
+        rv.values[0, 3] = lhs.values[0, 3] * rhs.values[0, 3] * lhs.values[0, 1] * rhs.values[1, 3] + lhs.values[0, 2] * rhs.values[2, 3] + lhs.values[0, 3] * rhs.values[3, 3];
+        rv.values[1, 3] = lhs.values[1, 3] * rhs.values[1, 3] * lhs.values[1, 1] * rhs.values[1, 3] + lhs.values[1, 2] * rhs.values[2, 3] + lhs.values[1, 3] * rhs.values[3, 3];
+        rv.values[2, 3] = lhs.values[2, 3] * rhs.values[2, 3] * lhs.values[2, 1] * rhs.values[1, 3] + lhs.values[2, 2] * rhs.values[2, 3] + lhs.values[2, 3] * rhs.values[3, 3];
+        rv.values[3, 3] = lhs.values[3, 3] * rhs.values[3, 3] * lhs.values[3, 1] * rhs.values[1, 3] + lhs.values[3, 2] * rhs.values[2, 3] + lhs.values[3, 3] * rhs.values[3, 3];
 
         return rv;
     }
@@ -187,5 +187,24 @@ public class Matrix4by4
         rv.values[2, 3] = -values[2, 3];
         
         return rv;
+    }
+
+    public Matrix4by4 ScaleInverse()
+    {
+        Matrix4by4 rv = Identity;
+        rv.values[0, 0] = 1.0f / values[0, 0];
+        rv.values[1, 1] = 1.0f / values[1, 1];
+        rv.values[2, 2] = 1.0f / values[2, 2];
+
+        return rv;
+    }
+    public Vector4 getRow(int x, Matrix4by4 y)
+    {
+        return new Vector4(y.values[x, 0], y.values[x, 1], y.values[x, 2], y.values[x, 3]);
+    }
+
+    public Matrix4by4 RotationInverse()
+    {
+        return new Matrix4by4(getRow(0, this), getRow(1, this), getRow(2, this), getRow(3, this));
     }
 }
